@@ -7,6 +7,12 @@ namespace ThisProjectIsATrashCan.Models
 {
     public class Pickup
     {
+        public DateTime ScheduledPickup;
 
+        public bool PickupCompleted;
+
+        public string PickUpDay;
+
+        public DateTime OneTimePickup;
     }
 }

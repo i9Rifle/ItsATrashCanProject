@@ -9,5 +9,15 @@ namespace ThisProjectIsATrashCan.Models
 {
     public class Account
     {
+        [Key]
+        public int Id { get; set; }
+
+        public bool IsSuspended;
+
+        public DateTime StartDay;
+
+        public DateTime EndDay;
+
+        public double Balance;
     }
 }
