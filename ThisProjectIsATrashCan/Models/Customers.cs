@@ -19,9 +19,9 @@ namespace ThisProjectIsATrashCan.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
-        [ForeignKey("ApplicationUser")]
+        [ForeignKey("IdentityUser")]
         public string UserId { get; set; }
-        public IdentityUser ApplicationUser { get; set; }
+        public IdentityUser IdentityUser { get; set; }
 
         [ForeignKey("Address")]
         [Display(Name = "Address")]
