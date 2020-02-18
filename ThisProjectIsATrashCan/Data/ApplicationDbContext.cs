@@ -4,6 +4,7 @@ using System.Text;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using ThisProjectIsATrashCan.Models;
 
 namespace ThisProjectIsATrashCan.Data
 {
@@ -27,5 +28,9 @@ namespace ThisProjectIsATrashCan.Data
                 }
                 );
         }
+
+        public DbSet<ThisProjectIsATrashCan.Models.Customer> Customer { get; set; }
+
+        public DbSet<ThisProjectIsATrashCan.Models.Employee> Employee { get; set; }
     }
 }
