@@ -22,7 +22,7 @@ namespace ThisProjectIsATrashCan.Controllers
         // GET: Customer
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Customer.Include(c => c.Account).Include(c => c.Address).Include(c => c.IdentityUser);
+            var applicationDbContext = _context.Customer.Include(c => c.Address).Include(c => c.IdentityUser);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -35,7 +35,6 @@ namespace ThisProjectIsATrashCan.Controllers
             }
 
             var customer = await _context.Customer
-                .Include(c => c.Account)
                 .Include(c => c.Address)
                 .Include(c => c.IdentityUser)
                 .FirstOrDefaultAsync(m => m.Id == id);
@@ -69,7 +68,6 @@ namespace ThisProjectIsATrashCan.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AccountId"] = new SelectList(_context.Set<Address>(), "Id", "Id", customer.AccountId);
             ViewData["AddressId"] = new SelectList(_context.Set<Address>(), "Id", "Id", customer.AddressId);
             ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", customer.UserId);
             return View(customer);
@@ -88,7 +86,6 @@ namespace ThisProjectIsATrashCan.Controllers
             {
                 return NotFound();
             }
-            ViewData["AccountId"] = new SelectList(_context.Set<Address>(), "Id", "Id", customer.AccountId);
             ViewData["AddressId"] = new SelectList(_context.Set<Address>(), "Id", "Id", customer.AddressId);
             ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", customer.UserId);
             return View(customer);
@@ -126,7 +123,6 @@ namespace ThisProjectIsATrashCan.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AccountId"] = new SelectList(_context.Set<Address>(), "Id", "Id", customer.AccountId);
             ViewData["AddressId"] = new SelectList(_context.Set<Address>(), "Id", "Id", customer.AddressId);
             ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", customer.UserId);
             return View(customer);
@@ -141,7 +137,6 @@ namespace ThisProjectIsATrashCan.Controllers
             }
 
             var customer = await _context.Customer
-                .Include(c => c.Account)
                 .Include(c => c.Address)
                 .Include(c => c.IdentityUser)
                 .FirstOrDefaultAsync(m => m.Id == id);

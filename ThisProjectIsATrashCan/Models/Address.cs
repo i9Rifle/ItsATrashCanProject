@@ -12,12 +12,12 @@ namespace ThisProjectIsATrashCan.Models
         [Key]
         public int Id { get; set; }
 
-        public string StreetAddress;
+        public string StreetAddress { get; set; }
 
-        public string State;
+        public string State { get; set; }
 
-        string City;
+        public string City { get; set; }
 
-        public int ZipCode;
+        public int ZipCode { get; set; }
     }
 }

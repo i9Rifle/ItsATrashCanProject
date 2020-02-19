@@ -14,6 +14,12 @@ namespace ThisProjectIsATrashCan.Data
             : base(options)
         {
         }
+        public DbSet<Address> Addresses { get; set; }
+        public DbSet<Pickup> Pickups { get; set; }
+
+        public DbSet<Customer> Customer { get; set; }
+
+        public DbSet<Employee> Employee { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -28,9 +34,5 @@ namespace ThisProjectIsATrashCan.Data
                 }
                 );
         }
-
-        public DbSet<ThisProjectIsATrashCan.Models.Customer> Customer { get; set; }
-
-        public DbSet<ThisProjectIsATrashCan.Models.Employee> Employee { get; set; }
     }
 }

@@ -27,14 +27,16 @@ namespace ThisProjectIsATrashCan.Models
         [Display(Name = "Address")]
         public int AddressId { get; set; }
         public Address Address { get; set; }
+
         [NotMapped]
         public IEnumerable<Address> Addresses { get; set; }
 
-        [ForeignKey("Account")]
-        [Display(Name = "Account")]
-        public int AccountId { get; set; }
-        public Address Account { get; set; }
-        [NotMapped]
-        public IEnumerable<Account> Accounts { get; set; }
+        public bool IsSuspended { get; set; }
+
+        public DateTime StartDay { get; set; }
+
+        public DateTime EndDay { get; set; }
+
+        public double Balance { get; set; }
     }
 }
