@@ -11,6 +11,8 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using System.Security.Claims;
+using ThisProjectIsATrashCan.Data;
 
 namespace ThisProjectIsATrashCan.Areas.Identity.Pages.Account
 {
@@ -83,7 +85,17 @@ namespace ThisProjectIsATrashCan.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-                    return LocalRedirect(returnUrl);
+                    //add redirect 
+                    var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                    var user = await _userManager.FindByIdAsync(userId);
+                    if(await _userManager.IsInRoleAsync(user, "Employee"))
+                    {
+                        return RedirectToPage("Employee");
+                    }
+                    else
+                    {
+                        return RedirectToPage("Customer");
+                    }
                 }
                 if (result.RequiresTwoFactor)
                 {
