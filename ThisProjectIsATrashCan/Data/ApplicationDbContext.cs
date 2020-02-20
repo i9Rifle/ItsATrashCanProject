@@ -15,6 +15,7 @@ namespace ThisProjectIsATrashCan.Data
         {
         }
         public DbSet<Address> Addresses { get; set; }
+
         public DbSet<Pickup> Pickups { get; set; }
 
         public DbSet<Customer> Customer { get; set; }
